@@ -13,7 +13,16 @@ body         { background-size: 100% 100%;background-repeat: no-repeat;}
 ========================*/
 
 @media only screen and (min-width: 0em) and (max-width: 33em){ /* width 2 */
-
+  
+  ul{display: none;}
+  
+  a{
+    display: block;
+    margin: 15% auto;
+    width:12em;
+    height:12em;
+    background-color: rgb(225,232,30);
+  }
 }
 
 /*========================
@@ -21,6 +30,9 @@ body         { background-size: 100% 100%;background-repeat: no-repeat;}
 ========================*/
 
 @media only screen and (min-width: 33em){  /* DESKTOPS */
+  
+  ul{display: block;}
+  
   li{
     width: 2em;
     height: 2em;
