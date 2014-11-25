@@ -22,5 +22,9 @@ if (Meteor.isServer) {
       }
     })
 
+    this._session.socket.on('close', function(){
+      console.log('client disconnects')
+    })
+
   });
 }
