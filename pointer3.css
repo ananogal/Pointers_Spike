@@ -13,12 +13,7 @@ body         { background-size: 100% 100%;background-repeat: no-repeat;}
 ========================*/
 
 @media only screen and (min-width: 0em) and (max-width: 33em){ /* width 2 */
-  section.phone{
-    background-color: rgb(160,239,250);
-    width:17%;
-    margin: 33% auto 0% auto;
-    height: 12em;
-  }
+
 }
 
 /*========================
@@ -26,11 +21,10 @@ body         { background-size: 100% 100%;background-repeat: no-repeat;}
 ========================*/
 
 @media only screen and (min-width: 33em){  /* DESKTOPS */
-  section.screen{
-    background-color: rgb(27,118,130);
-    width:90%;
-    margin: 3% auto 0% auto;
-    height: 40em;
-    padding:2em;
+  li{
+    width: 2em;
+    height: 2em;
+    background-color: rgb(232,30,48);
+    margin:2px;
   }
 }

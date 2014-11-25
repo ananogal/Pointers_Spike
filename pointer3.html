@@ -4,15 +4,13 @@
 </head>
 
 <body>
-  {{> phone}}
-  {{> screen}}
+  {{> pointersList}}
 </body>
 
-<template name="phone">
-  <section class="phone"></section>
+<template name="pointersList">
+  <ul>
+  {{#each pointers}}
+    <li>{{_id}}</li>
+  {{/each}}
+  </ul>
 </template>
-
-<template name="screen">
-  <section class="screen"></section>
-</template>
-
