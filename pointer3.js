@@ -12,19 +12,38 @@ if (Meteor.isClient) {
   })
 
   Template.button.rendered = function(){
+
     var el = this.find('a')
+
     Hammer(el).on('press', function(e){
       console.log('Create Mongo Object')
       Pointer.insert({_id: id._str, x: 0, y: 0})
+      startMovementCapture()
     })
+
     Hammer(el).on('hammer.input', function(e){
-      //e.preventDefault()
       if(e.isFirst === false){
-        Pointer.remove(id._str)
         console.log('Delete Mongo Object')
+        Pointer.remove(id._str)
+        stopMovementCapture()
       }
     })
   }
+
+  function writeCoordinance(m){
+    console.log(m.gamma)
+  }
+
+  function startMovementCapture(){
+    window.addEventListener('deviceorientation', writeCoordinance, false)
+  }
+
+  function stopMovementCapture(){
+    window.removeEventListener('deviceorientation', writeCoordinance, false)
+
+  }
+
+
 
 }
 
