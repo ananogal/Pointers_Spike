@@ -3,11 +3,22 @@ Pointer = new Mongo.Collection('pointers')
 if (Meteor.isClient) {
 
   var id = new Mongo.ObjectID
+  var screenX = $( window ).width() / 2
+  var screenY = $( window ).width() / 2
   
 
   Template.pointersList.helpers({
     pointers: function(){
       return Pointer.find({})
+    },
+    id: function(){
+      return id._str
+    },
+    x: function(){
+      return Pointer.findOne({},{x:1, _id: id._str}).x
+    },
+    y: function(){
+      return Pointer.findOne({},{y:1, _id: id._str}).y
     }
   })
 
@@ -16,14 +27,11 @@ if (Meteor.isClient) {
     var el = this.find('a')
 
     Hammer(el).on('press', function(e){
-      console.log('Create Mongo Object')
-      Pointer.insert({_id: id._str, x: 0, y: 0})
-      startMovementCapture()
+      Pointer.insert({_id: id._str, x: screenX, y: screenY}, startMovementCapture())
     })
 
     Hammer(el).on('hammer.input', function(e){
       if(e.isFirst === false){
-        console.log('Delete Mongo Object')
         Pointer.remove(id._str)
         stopMovementCapture()
       }
@@ -31,7 +39,10 @@ if (Meteor.isClient) {
   }
 
   function writeCoordinance(m){
-    console.log(m.gamma)
+    var x = (m.gamma*15).toPrecision(3) 
+    var y = (m.beta*15).toPrecision(3)
+    Pointer.update(id._str,{x: x, y: y})
+    console.log("x: %s | y: %s", x,y)
   }
 
   function startMovementCapture(){

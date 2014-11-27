@@ -14,8 +14,8 @@ body         { background-size: 100% 100%;background-repeat: no-repeat;}
 
 @media only screen and (min-width: 0em) and (max-width: 33em){ /* width 2 */
   
-  ul{display: none;}
-  
+  li{display: none;}
+
   a{
     display: block;
     margin: 15% auto;
@@ -32,8 +32,9 @@ body         { background-size: 100% 100%;background-repeat: no-repeat;}
 @media only screen and (min-width: 33em){  /* DESKTOPS */
   
   ul{display: block;}
-  
+
   li{
+    position: absolute;
     width: 2em;
     height: 2em;
     background-color: rgb(232,30,48);
